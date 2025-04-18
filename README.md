@@ -17,9 +17,12 @@ Esta es una aplicación desarrollada con Spring Boot que simula un sistema de **
 - **TransferenciaDTO.java** = Clase para recibir los datos del cuerpo JSON en la transferencia
 - controlador/**TransferenciaController.java** = Maneja las peticiones HTTP relacionadas con transferencias y consultas
 
+---
+
 ## EP
 
 1. Realizar transferencia
+
 POST http://localhost:8080/transferencia
 
 Body JSON:
@@ -33,8 +36,12 @@ Body JSON:
 
 GET http://localhost:8080/transferencia
 
+---
+
 ## Requisitos
 
 - Java 17+
 - Maven
 - Spring Boot
+
+---
