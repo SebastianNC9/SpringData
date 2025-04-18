@@ -1,10 +1,18 @@
 package com.transferencia.SpringTransferencia.model;
 
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 
+@Entity
+@Table(name = "cuentas")
 public class Cuenta {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String propietario;
+
     private BigDecimal cantidad;
 
     public Cuenta() {}

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.Collection;
+import java.util.List;
 
 @Service
 public class TransferenciaService {
@@ -22,20 +22,21 @@ public class TransferenciaService {
         BigDecimal saldoDestino = cuentaDestino.getCantidad();
 
         if (saldoOrigen.compareTo(cantidad) < 0) {
-            return false; // No hay suficiente saldo
+            return false;
         }
 
-        saldoOrigen = saldoOrigen.subtract(cantidad);
-        saldoDestino = saldoDestino.add(cantidad);
+        cuentaOrigen.setCantidad(saldoOrigen.subtract(cantidad));
+        cuentaDestino.setCantidad(saldoDestino.add(cantidad));
 
-        repo.actualizarCantidad(origen, saldoOrigen);
-        repo.actualizarCantidad(destino, saldoDestino);
+        repo.save(cuentaOrigen);
+        repo.save(cuentaDestino);
 
         return true;
     }
-    
-    public Collection<Cuenta> obtenerTodasLasCuentas() {
-    return repo.findAll();
+
+    public List<Cuenta> obtenerTodasLasCuentas() {
+        return repo.findAll();
     }
 }
+
 

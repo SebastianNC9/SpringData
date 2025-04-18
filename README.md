@@ -4,18 +4,28 @@
 
 Esta es una aplicación desarrollada con Spring Boot que simula un sistema de **transferencia de dinero** entre cuentas. Cuenta con las siguientes funcionalidades:
 
-- Crear cuentas simuladas en memoria.
-- Realizar transferencias entre cuentas (verificación de saldo).
+- Persistencia de datos con **MySQL** usando Spring Data JPA.
+- Realizar transferencias entre cuentas.
 - Consultar el estado de todas las cuentas.
 
 ---
 
-## 🧱 Estructura del Proyecto
+## Estructura del Proyecto
 
-- repositorio/**CuentaRepositorio.java** = Simula una base de datos en memoria con dos cuentas precargadas
-- servicio/**TransferenciaService.java** = Contiene la logica de negocio para realizar transferencias y consultar cuentas
-- **TransferenciaDTO.java** = Clase para recibir los datos del cuerpo JSON en la transferencia
-- controlador/**TransferenciaController.java** = Maneja las peticiones HTTP relacionadas con transferencias y consultas
+- `model/Cuenta.java`  
+  Entidad que representa una cuenta con ID, nombre del propietario y saldo.
+
+- `repositorio/CuentaRepositorio.java`  
+  Interfaz que extiende `JpaRepository`, permitiendo operaciones CRUD directamente con la base de datos MySQL.
+
+- `servicio/TransferenciaService.java`  
+  Contiene la lógica de negocio para realizar transferencias y consultar cuentas.
+
+- `TransferenciaDTO.java`  
+  Clase para recibir los datos del cuerpo JSON en la transferencia.
+
+- `controlador/TransferenciaController.java`  
+  Controlador REST que maneja las peticiones HTTP relacionadas con transferencias y consultas.
 
 ---
 
@@ -45,3 +55,15 @@ GET http://localhost:8080/transferencia
 - Spring Boot
 
 ---
+
+## Para correr el proyecto
+
+- MySQL esté corriendo (por ejemplo, en XAMPP).
+- Crea la base de datos transferencias_db desde phpMyAdmin.
+- Ejecuta la aplicación con Maven
+- Usa Postman para probar los endpoints.
+
+**En application.properties esta parte debe ir con su usuario y contraseña**
+
+- spring.datasource.username=
+- spring.datasource.password=
